@@ -10,6 +10,7 @@ You need to download one of the available models:
 - You can install a model with this code: python -m spacy download en_core_web_sm
 - If you want to install med7: pip install https://huggingface.co/kormilitzin/en_core_med7_lg/resolve/refs%2Fpr%2F3/en_core_med7_lg-3.4.2.1-py3-none-any.whl
 . You will have more info from here: https://github.com/kormilitzin/med7
+- Article about med7: https://kormilitzin.medium.com/med7-clinical-information-extraction-system-in-python-and-spacy-5e6f68ab1c68
 
 ## Considerations
 - Spacy is not compatible with Python 3.13 (April 2025). Ref: https://github.com/explosion/spaCy/issues/13658
