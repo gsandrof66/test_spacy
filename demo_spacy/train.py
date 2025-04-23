@@ -25,4 +25,4 @@ for i in range(20):
         nlp.update([example], sgd=optimizer)
 
 # Save the model
-nlp.to_disk("ner_model")
+nlp.to_disk("./ner_custom_model")
