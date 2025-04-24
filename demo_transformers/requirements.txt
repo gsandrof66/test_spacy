@@ -1,0 +1,4 @@
+transformers==4.51.3
+datasets==3.5.0
+torch==2.7.0
+hf_xet==1.0.3
