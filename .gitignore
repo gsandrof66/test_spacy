@@ -1,2 +1,6 @@
 # model
-ner_custom_model
+ner_custom_model/
+read_ann/MACCROBAT2020/
+read_ann/MACCROBAT2018/
+read_ann/*.zip
+.model/
