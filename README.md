@@ -32,3 +32,10 @@ Base models:
 
 Fine tuned models:
 - https://huggingface.co/Simonlee711/Clinical_ModernBERT
+
+# Extra tools
+You will need this tool in order to label your data for fine tunning:
+https://labelstud.io/
+Possible datasets 
+- https://universe.roboflow.com/fast-nuces-xcmbn/prescription-labeling/dataset/3#
+- curl -L "https://universe.roboflow.com/ds/dsYQAnDdyu?key=Hx3NcG9JDD" > roboflow.zip; unzip roboflow.zip; rm roboflow.zip
