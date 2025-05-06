@@ -1,29 +1,26 @@
-from transformers import RobertaTokenizer, RobertaForTokenClassification
-import torch
+from transformers import RobertaTokenizer, RobertaForTokenClassification, pipeline
+import pandas as pd
+
+model_dir =  '.model/'
 
 # Load the tokenizer and model
-tokenizer = RobertaTokenizer.from_pretrained("roberta-base")
-model = RobertaForTokenClassification.from_pretrained("roberta-base", num_labels=9)  # Adjust num_labels based on your dataset
+tokenizer = RobertaTokenizer.from_pretrained("roberta-base", cache_dir=model_dir)
+model = RobertaForTokenClassification.from_pretrained("roberta-base", cache_dir=model_dir)# Adjust num_labels based on your dataset
 
-# Example text
-text = "The patient was prescribed 100mg of ibuprofen for pain relief and 500mg of amoxicillin for the infection."
+# NER pipeline
+ner_pipeline = pipeline("ner", model=model, tokenizer=tokenizer)# , aggregation_strategy="simple" ,device=0 if using gpu
 
-# Tokenize the text
-inputs = tokenizer(text, return_tensors="pt")
+text="""
+The patient is diagnosed with Alzheimer's disease. 
+She is Vitamin D deficient.
+The patient is 35 years old. The age of the patient is 35 years.
+The patient was prescribed 500mg of Amoxicillin.
+"""
 
-# Get model predictions
-outputs = model(**inputs)
-logits = outputs.logits
+ner_results = ner_pipeline(text)
 
-# Convert logits to predicted labels
-predictions = torch.argmax(logits, dim=2)
+# for entity in ner_results:
+#     print(f"Entity: {entity['word']}, Label: {entity['entity']}")
 
-# Map predictions to labels
-label_map = {0: "O", 1: "B-MEDICATION", 2: "I-MEDICATION", 3: "B-DOSAGE", 4: "I-DOSAGE", 5: "B-CONDITION", 6: "I-CONDITION", 7: "B-PATIENT", 8: "I-PATIENT"}  # Example label map
-tokens = tokenizer.convert_ids_to_tokens(inputs["input_ids"][0])
-predicted_labels = [label_map[pred.item()] for pred in predictions[0]]
-
-# Print tokens with their predicted labels
-print(text)
-for token, label in zip(tokens, predicted_labels):
-    print(f"{token}: {label}")
+result1_df = pd.DataFrame(ner_results)
+print(result1_df)

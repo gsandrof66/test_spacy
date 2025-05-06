@@ -1,7 +1,7 @@
-# Simple **SPACY** example
-This example shows a simple pipeline to create a NER application
+# **Project**
+This Python project contains simple pipelines to create a NER application
 
-# Available models
+# **spacy**
 You need to download one of the available models:
 ## English Models
 * en_core_web_sm: Small model optimized for CPU, suitable for basic tasks.
@@ -13,6 +13,22 @@ You need to download one of the available models:
 - Article about med7: https://kormilitzin.medium.com/med7-clinical-information-extraction-system-in-python-and-spacy-5e6f68ab1c68
 
 ## Considerations
-- Spacy is not compatible with Python 3.13 (April 2025). Ref: https://github.com/explosion/spaCy/issues/13658
-- Med 7 is not compatible with Python 3.12
-- Med 7 requires numpy 1.26.4 and spacy 3.4.4
+- Spacy is not compatible with Python 3.13 (May 2025). Ref: https://github.com/explosion/spaCy/issues/13658
+- Med 7 requires numpy 1.26.4 and spacy 3.4.4 and it is not compatible with Python 3.12
+
+# Transformers
+These models can work with sentiment analysis, named entity recognition, question answering, and text classification. There are some base models available for future evaluation
+- Bert
+- DistilBert
+- RoBerta
+
+There are some customised models for medical purposes
+- Biomed
+
+# Resources
+Base models:
+- https://huggingface.co/google-bert
+- https://huggingface.co/FacebookAI
+
+Fine tuned models:
+- https://huggingface.co/Simonlee711/Clinical_ModernBERT
