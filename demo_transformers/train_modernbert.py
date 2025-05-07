@@ -1,6 +1,5 @@
 # https://medium.com/@whyamit101/fine-tuning-bert-for-named-entity-recognition-ner-b42bcf55b51d
 from transformers import TrainingArguments, Trainer, AutoTokenizer, AutoModelForTokenClassification
-
 from datasets import load_dataset, Dataset
 import json
 
