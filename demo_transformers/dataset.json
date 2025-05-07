@@ -1,18 +1,108 @@
 [
   {
-    "text": "Patient should take 5 mg of Prednisone daily.",
+    "sentence": "Patient should take 5mg of Prednisone daily.",
     "entities": [
-      {"start": 20, "end": 21, "label": "DOSAGE"},
-      {"start": 25, "end": 34, "label": "MEDICATION"},
-      {"start": 35, "end": 40, "label": "FREQUENCY"}
+      { "start": 20, "end": 23, "label": "DOSAGE" },
+      { "start": 27, "end": 37, "label": "MEDICATION" },
+      { "start": 38, "end": 43, "label": "FREQUENCY" }
     ]
   },
   {
-    "text": "Administer 10 ml of Amoxicillin twice a day.",
+    "sentence": "Administer 10ml of Amoxicillin twice a day.",
     "entities": [
-      {"start": 10, "end": 12, "label": "DOSAGE"},
-      {"start": 16, "end": 27, "label": "MEDICATION"},
-      {"start": 28, "end": 38, "label": "FREQUENCY"}
+      { "start": 11, "end": 15, "label": "DOSAGE" },
+      { "start": 19, "end": 30, "label": "MEDICATION" },
+      { "start": 31, "end": 42, "label": "FREQUENCY" }
+    ]
+  },
+  {
+    "sentence": "Take 2 tablets of Aspirin twice a day.",
+    "entities": [
+      { "start": 5, "end": 14, "label": "DOSAGE" },
+      { "start": 18, "end": 25, "label": "MEDICATION" },
+      { "start": 26, "end": 36, "label": "FREQUENCY" }
+    ]
+  },
+  {
+    "sentence": "Administer 5ml of Amoxicillin every 8 hours.",
+    "entities": [
+      { "start": 10, "end": 13, "label": "DOSAGE" },
+      { "start": 17, "end": 28, "label": "MEDICATION" },
+      { "start": 34, "end": 44, "label": "FREQUENCY" }
+    ]
+  },
+
+  {
+    "sentence": "Take one capsule of Ibuprofen every 6 hours.",
+    "entities": [
+      { "start": 5, "end": 18, "label": "DOSAGE" },
+      { "start": 22, "end": 31, "label": "MEDICATION" },
+      { "start": 32, "end": 42, "label": "FREQUENCY" }
+    ]
+  },
+  {
+    "sentence": "Apply 10mg of Hydrocortisone cream twice daily.",
+    "entities": [
+      { "start": 6, "end": 10, "label": "DOSAGE" },
+      { "start": 14, "end": 27, "label": "MEDICATION" },
+      { "start": 34, "end": 45, "label": "FREQUENCY" }
+    ]
+  },
+  {
+    "sentence": "Inject 0.5ml of Insulin before each meal.",
+    "entities": [
+      { "start": 7, "end": 11, "label": "DOSAGE" },
+      { "start": 15, "end": 22, "label": "MEDICATION" },
+      { "start": 29, "end": 39, "label": "FREQUENCY" }
+    ]
+  },
+  {
+    "sentence": "Take 1 tablet of Paracetamol every 4 hours.",
+    "entities": [
+      { "start": 5, "end": 14, "label": "DOSAGE" },
+      { "start": 18, "end": 29, "label": "MEDICATION" },
+      { "start": 30, "end": 40, "label": "FREQUENCY" }
+    ]
+  },
+
+  {
+    "sentence": "Apply 5 grams of Neosporin ointment three times daily.",
+    "entities": [
+      { "start": 6, "end": 13, "label": "DOSAGE" },
+      { "start": 17, "end": 31, "label": "MEDICATION" },
+      { "start": 32, "end": 48, "label": "FREQUENCY" }
+    ]
+  },
+  {
+    "sentence": "Take 20mg of Omeprazole once daily.",
+    "entities": [
+      { "start": 5, "end": 10, "label": "DOSAGE" },
+      { "start": 14, "end": 24, "label": "MEDICATION" },
+      { "start": 25, "end": 35, "label": "FREQUENCY" }
+    ]
+  },
+  {
+    "sentence": "Administer 2 drops of Atropine sulfate every 4 hours.",
+    "entities": [
+      { "start": 10, "end": 17, "label": "DOSAGE" },
+      { "start": 21, "end": 35, "label": "MEDICATION" },
+      { "start": 41, "end": 51, "label": "FREQUENCY" }
+    ]
+  },
+  {
+    "sentence": "Take 1 teaspoon of Cough Syrup every 6 hours.",
+    "entities": [
+      { "start": 5, "end": 15, "label": "DOSAGE" },
+      { "start": 19, "end": 30, "label": "MEDICATION" },
+      { "start": 31, "end": 41, "label": "FREQUENCY" }
+    ]
+  },
+  {
+    "sentence": "Apply 2 pumps of Hand Sanitizer after each use.",
+    "entities": [
+      { "start": 6, "end": 13, "label": "DOSAGE" },
+      { "start": 17, "end": 30, "label": "MEDICATION" },
+      { "start": 31, "end": 45, "label": "FREQUENCY" }
     ]
   }
 ]

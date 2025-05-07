@@ -12,7 +12,7 @@ model = RobertaForTokenClassification.from_pretrained("roberta-base", num_labels
 def tokenize_and_align_labels(examples):
     tokenized_inputs = tokenizer(examples["tokens"], truncation=True, is_split_into_words=True)
     labels = []
-    for i, label in enumerate(examples[f"ner_tags"]):
+    for i, label in enumerate(examples["ner_tags"]):
         word_ids = tokenized_inputs.word_ids(batch_index=i)
         previous_word_idx = None
         label_ids = []

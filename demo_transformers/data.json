@@ -1,2 +1,2 @@
-Sentence: "Patient should take 500mg of Paracetamol twice daily."
+Text: "Patient should take 500mg of Paracetamol twice daily."
 Entities: [("500mg", "DOSAGE"), ("Paracetamol", "MEDICATION"), ("twice daily", "FREQUENCY")]
