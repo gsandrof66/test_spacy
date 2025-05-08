@@ -1,8 +1,13 @@
 from transformers import TrainingArguments, Trainer, AutoTokenizer, AutoModelForTokenClassification
-import tf_keras as keras
+# import tf_keras as keras
 from datasets import load_dataset, Dataset
 from collections import Counter
 import json, pandas as pd
+
+import torch
+
+device = torch.device("cpu")
+
 # from seqeval.metrics import precision_score, recall_score, f1_score
 
 # def compute_metrics(pred):
@@ -27,7 +32,7 @@ print(dataset)
 
 # Convert dataset into BERT-compatible format
 def tokenize_and_align_labels(batch, tokenizer):
-    tokenized_inputs = tokenizer(batch["tokens"], truncation=True, is_split_into_words=True)
+    tokenized_inputs = tokenizer(batch["tokens"], truncation=True, padding=True, is_split_into_words=True)
     labels = []
     for i, label in enumerate(batch["tags"]):
         word_ids = tokenized_inputs.word_ids(batch_index=i)  # Map tokens to words
@@ -43,18 +48,26 @@ def tokenize_and_align_labels(batch, tokenizer):
     tokenized_inputs["labels"] = labels
     return tokenized_inputs
 
-tokenized_dataset = dataset.map(lambda x: tokenize_and_align_labels(x, tokenizer), batched=True)
+tokenized_dataset = dataset.map(lambda x: tokenize_and_align_labels(x, tokenizer), 
+                                batched=True)
+
+
+# Ensure the data is on the CPU
+tokenized_dataset.set_format(type='torch', device=device)
+
 
 # Inspect class distribution
 train_labels = [label for sample in dataset["train"]["tags"] for label in sample]
 label_counts = Counter(train_labels)
-# print(f"Class distribution: {label_counts}")
+print(f"Class distribution: {label_counts}")
 
 # Load pre-trained BERT model with a token classification head
 model = AutoModelForTokenClassification.from_pretrained(
     model_name, cache_dir=model_dir,
     num_labels=len(label_counts),  # Adjust for the number of entity types in your dataset
 )
+
+model.to(device)
 
 # Check the model architecture
 # print(model.config)
@@ -70,6 +83,7 @@ training_args = TrainingArguments(
     warmup_steps=500,
     logging_dir="./logs",
     logging_steps=10,
+    dataloader_pin_memory=False
 )
 
 
@@ -78,7 +92,7 @@ trainer = Trainer(
     args=training_args,
     train_dataset=tokenized_dataset["train"],
     eval_dataset=tokenized_dataset["validation"],
-    tokenizer=tokenizer,
+    tokenizer=tokenizer
     # compute_metrics=compute_metrics,  # Custom function to calculate F1, precision, recall
 )
 
