@@ -5,3 +5,4 @@ read_ann/MACCROBAT2018/
 read_ann/*.zip
 .model/
 my_modernbert
+logs

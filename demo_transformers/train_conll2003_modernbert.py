@@ -1,22 +1,23 @@
 from transformers import TrainingArguments, Trainer, AutoTokenizer, AutoModelForTokenClassification
+import tf_keras as keras
 from datasets import load_dataset, Dataset
 from collections import Counter
 import json, pandas as pd
-from seqeval.metrics import precision_score, recall_score, f1_score
+# from seqeval.metrics import precision_score, recall_score, f1_score
 
-def compute_metrics(pred):
-    labels = pred.label_ids
-    preds = pred.predictions.argmax(-1)
-    true_labels = [[id2label[l] for l in label] for label in labels]
-    true_preds = [[id2label[p] for p in pred] for pred in preds]
+# def compute_metrics(pred):
+#     labels = pred.label_ids
+#     preds = pred.predictions.argmax(-1)
+#     true_labels = [[id2label[l] for l in label] for label in labels]
+#     true_preds = [[id2label[p] for p in pred] for pred in preds]
     
-    precision = precision_score(true_labels, true_preds)
-    recall = recall_score(true_labels, true_preds)
-    f1 = f1_score(true_labels, true_preds)
-    
-    return {"precision": precision, "recall": recall, "f1": f1}
+#     precision = precision_score(true_labels, true_preds)
+#     recall = recall_score(true_labels, true_preds)
+#     f1 = f1_score(true_labels, true_preds)
+#     return {"precision": precision, "recall": recall, "f1": f1}
 
-model_name = "answerdotai/ModernBERT-base"
+# Smodel_name = "answerdotai/ModernBERT-base"
+model_name = "google-bert/bert-base-cased"
 model_dir =  '.model/'
 
 tokenizer = AutoTokenizer.from_pretrained(model_name, cache_dir=model_dir)
@@ -78,7 +79,7 @@ trainer = Trainer(
     train_dataset=tokenized_dataset["train"],
     eval_dataset=tokenized_dataset["validation"],
     tokenizer=tokenizer,
-    compute_metrics=compute_metrics,  # Custom function to calculate F1, precision, recall
+    # compute_metrics=compute_metrics,  # Custom function to calculate F1, precision, recall
 )
 
 trainer.train()

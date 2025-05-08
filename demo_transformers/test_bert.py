@@ -2,10 +2,12 @@ from transformers import AutoModelForTokenClassification, AutoTokenizer, pipelin
 import pandas as pd
 
 # local folder
-model_dir =  '.model/'
+model_dir = '.model/'
 
-model = AutoModelForTokenClassification.from_pretrained("google-bert/bert-base-cased", cache_dir=model_dir)
-tokenizer = AutoTokenizer.from_pretrained("google-bert/bert-base-cased", cache_dir=model_dir)
+model = AutoModelForTokenClassification.from_pretrained(
+    "google-bert/bert-base-cased", cache_dir=model_dir)
+tokenizer = AutoTokenizer.from_pretrained(
+    "google-bert/bert-base-cased", cache_dir=model_dir)
 
 ner_pipeline = pipeline("ner", model=model, tokenizer=tokenizer)
 
